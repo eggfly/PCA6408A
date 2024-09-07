@@ -37,8 +37,6 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-#define ESP32_I2C_SDA GPIO_NUM_21
-#define ESP32_I2C_SCL GPIO_NUM_22
 #define SCL_CLOCK_FREQUENCY 100000 // (100 kHz (Standard Mode) || 400 kHz (Fast Mode))
 
 bool i2cBegin(uint8_t sda, uint8_t scl, uint32_t frequency);
