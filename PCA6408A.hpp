@@ -29,8 +29,8 @@
  * @copyright
  *     © 2023 Itay Nave. All rights reserved.
  *     This software is provided "as is", without warranty of any kind, express or implied.
- *     Redistribution and use in source and binary forms, with or without modification, 
- *     are permitted provided that the above copyright notice and this permission notice 
+ *     Redistribution and use in source and binary forms, with or without modification,
+ *     are permitted provided that the above copyright notice and this permission notice
  *     appear in all copies.
  */
 
