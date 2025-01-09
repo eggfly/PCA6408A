@@ -5,7 +5,7 @@ uint8_t current_output_state = 0b00000000; // Initialize to all LOW
 PCA6408A::PCA6408A(uint8_t addr)
 {
     _i2caddr = addr;
-    Wire.begin();
+    // Wire.begin();
 }
 
 /**
@@ -57,12 +57,17 @@ void PCA6408A::setAllClear()
     i2cWriteByte(_i2caddr, PCA6408A_OUTPUT_REG, current_output_state);
 }
 
+bool PCA6408A::readInput(uint8_t *inputs)
+{
+    return i2cReadByte(_i2caddr, PCA6408A_INPUT_REG, inputs);
+}
+
 /**
- @brief set Port to GPIO
+ @brief set GPIO ports direction
  @param [in] output output
 */
-void PCA6408A::setGPIO(uint8_t output)
+void PCA6408A::setDirection(uint8_t directionConfigBits)
 {
     // writeI2c
-    i2cWriteByte(_i2caddr, PCA6408A_OUTPUT_REG, output);
+    i2cWriteByte(_i2caddr, PCA6408A_CONFIGURATION_REG, directionConfigBits);
 }

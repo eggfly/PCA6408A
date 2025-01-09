@@ -21,15 +21,17 @@ bool i2cBegin(uint8_t sda, uint8_t scl, uint32_t frequency)
     return true;
 }
 
-uint8_t i2cReadByte(uint8_t address, uint8_t subAddress)
+bool i2cReadByte(uint8_t address, uint8_t subAddress, uint8_t *data)
 {
-    uint8_t data;
     Wire.beginTransmission(address);
     Wire.write(subAddress);
-    Wire.endTransmission(false);
-    Wire.requestFrom(address, (uint8_t)1);
-    data = Wire.read();
-    return data;
+    Wire.endTransmission();
+    if (Wire.requestFrom(address, (uint8_t)1) != 1)
+    {
+        return false;
+    }
+    *data = Wire.read();
+    return true;
 }
 
 void i2cWriteByte(uint8_t address, uint8_t subAddress, uint8_t data)
@@ -44,7 +46,7 @@ void i2cReadBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t *d
 {
     Wire.beginTransmission(address);
     Wire.write(subAddress);
-    Wire.endTransmission(false);
+    Wire.endTransmission();
     Wire.requestFrom(address, count);
     for (uint8_t i = 0; Wire.available(); i++)
     {

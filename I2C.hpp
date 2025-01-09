@@ -41,7 +41,7 @@
 
 bool i2cBegin(uint8_t sda, uint8_t scl, uint32_t frequency);
 
-uint8_t i2cReadByte(uint8_t address, uint8_t subAddress);
+bool i2cReadByte(uint8_t address, uint8_t subAddress, uint8_t *data);
 void i2cWriteByte(uint8_t address, uint8_t subAddress, uint8_t data);
 
 void i2cReadBytes(uint8_t address, uint8_t subAddress, uint8_t count, uint8_t *dest);

@@ -43,6 +43,7 @@
 #define PCA6408A_SLAVE_ADDRESS 0x20
 
 // Register addresses
+#define PCA6408A_INPUT_REG  0x00
 #define PCA6408A_OUTPUT_REG 0x01
 #define PCA6408A_CONFIGURATION_REG 0x03
 
@@ -80,7 +81,8 @@ public:
     void Initialization(void);
     void setDigital(uint8_t port, uint8_t output);
     void setAllClear();
-    void setGPIO(uint8_t output);
+    void setDirection(uint8_t directionConfigBits);
+    bool readInput(uint8_t *inputs);
 
 private:
     uint8_t _i2caddr;
